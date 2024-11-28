@@ -1,0 +1,112 @@
+.container-usuarios-publicaciones {
+    background-color: #f5f5f5;
+    border: 1px solid #dcdcdc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Estilo general para el perfil */
+.custom-profile-card {
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff); /* Gradiente sutil */
+    color: #333;
+    padding-top: 100px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Fondo del usuario */
+.custom-background-usuario {
+    height: 120px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, #0056b3 0%, #0056b3 100%); /* Fondo degradado azul */
+}
+
+/* Estilo de la imagen circular */
+.custom-profile-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Estilo del nombre y el enlace */
+.custom-card-body {
+    position: relative;
+    z-index: 3;
+    margin-top: 80px;
+}
+
+/* Estilo del nombre de usuario */
+.custom-card-body a {
+    color: #333;
+    text-decoration: none;
+}
+
+.custom-card-body h5 {
+    font-size: 1.4em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Línea divisoria */
+.custom-division-line {
+    margin: 15px 0;
+    height: 1px;
+    width: 80%;
+    background-color: #ddd;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos para la sección de estadísticas */
+.custom-tabla-estadisticas {
+    font-size: 16px;
+    color: #555;
+    margin-top: 15px;
+}
+
+/* Estilos para las estadísticas */
+.custom-tabla-estadisticas .stats-text {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #ffffff; /* Fondo azul claro para resaltar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid #000000; /* Borde azul */
+}
+
+.custom-tabla-estadisticas .stats-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000; /* Resalta el número con un azul más oscuro */
+    display: block;
+}
+
+/* Efecto hover para resaltar */
+.custom-tabla-estadisticas .stats-text:hover {
+    background-color: #cce7ff; /* Cambio de fondo en hover */
+    color: #0056b3; /* Cambio de color del texto en hover */
+}

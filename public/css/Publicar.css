@@ -1,0 +1,106 @@
+.d-flex a img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #000000;
+    border-radius: 50%;  /* Hace la imagen circular */
+    margin-right: 15px;
+    object-fit: cover;  /* Mantiene las proporciones de la imagen sin distorsionarla */
+}
+
+textarea.form-control {
+    resize: none;
+    height: 80px;
+    padding: 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 14px;
+    overflow-y: auto;
+}
+
+#charCount {
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+label.btn.btn-light {
+    cursor: pointer;
+}
+
+#nombreArchivo {
+    margin-left: 10px;
+    color: #555;
+    line-height: 30px;
+}
+
+#quitarArchivo {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid darkred;
+    cursor: pointer;
+    display: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+}
+
+button.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+/* Clases adicionales para el conteo de caracteres */
+.char-count {
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+/* Estilos del nombre del archivo */
+.file-name {
+    margin-left: 10px;
+    color: #555;
+    line-height: 30px;
+}
+
+/* Estilos del botón para quitar el archivo */
+.remove-file-btn {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid darkred;
+    cursor: pointer;
+    display: none;
+}
+
+.remove-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+}

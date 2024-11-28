@@ -1,0 +1,141 @@
+/* Contenedor principal de la tarjeta */
+.card.mt-4-post {
+    width: 100%;  /* Asegura que ocupe todo el ancho disponible */
+    max-width: 600px;  /* Limita el ancho máximo a 600px */
+    margin-top: -50px; /* Mueve el cuadro más arriba */
+    margin-left: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* Card Body */
+.card-body-post {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Avatar del usuario */
+.post-avatar {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+}
+
+/* Contenedor para el textarea */
+.d-flex.align-items-start {
+    position: relative;
+}
+
+/* Campo de texto - Comenta lo que viste */
+.post-textarea {
+    width: 85%;  /* Asegura que ocupe todo el ancho disponible */
+    height: 120px;  /* Ajusta la altura del cuadro de texto */
+    max-width: 85%;  /* Asegura que no tenga un ancho máximo */
+    min-width: 85%;  /* Asegura que no tenga un ancho mínimo */
+    border: 1px solid #dd1e1e;
+    border-radius: 8px;
+    padding: 15px;
+    resize: none;  /* Evita que el usuario redimensione el textarea */
+    font-size: 14px;
+    color: #333;
+    background-color: #f7f8fa;
+    transition: all 0.3s ease;
+}
+
+/* Efecto cuando el textarea está en foco */
+.post-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Contador de caracteres */
+.post-char-count {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    text-align: right;
+}
+
+/* Botón de subida de archivo */
+.post-upload-btn {
+    font-size: 14px;
+    color: #007bff;
+    background-color: #f1f5f8;
+    padding: 8px 15px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover en botón de subida de archivo */
+.post-upload-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Nombre del archivo */
+.post-file-name {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Botón para eliminar archivo */
+.post-remove-file-btn {
+    display: none;
+    color: #dc3545;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.remove-icon {
+    font-size: 16px;
+}
+
+/* Mostrar el botón de eliminar archivo cuando hay un archivo seleccionado */
+.post-remove-file-btn.show {
+    display: inline-block;
+}
+
+/* Botón de publicar */
+.post-submit-btn {
+    background-color: #007bff;
+    color: rgb(226, 21, 21);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+/* Hover en botón de publicar */
+.post-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor de los elementos en la parte inferior */
+.d-flex.justify-content-between.align-items-center {
+    margin-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+}
+
+/* Estilos para el contenedor de la columna */
+.col-md-8 {
+    display: flex;
+    justify-content: flex-start; /* Alinea a la izquierda */
+    align-items: flex-start; /* Mueve el formulario hacia la parte superior */
+    margin-top: -40px; /* Mueve más arriba el formulario */
+    max-width: 600px;  /* Limita el ancho máximo de la columna */
+}

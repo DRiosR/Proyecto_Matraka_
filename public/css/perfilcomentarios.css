@@ -1,0 +1,53 @@
+/* Aseguramos que el contenido debajo de perfil esté centrado */
+.col-md-6-perfil {
+    display: flex;
+    justify-content: center;  /* Centra el contenido horizontalmente */
+    align-items: center;      /* Centra el contenido verticalmente */
+    margin: 30px auto;        /* Da un pequeño margen superior y centra el contenedor */
+    width: 100%;              /* Ancho completo */
+    height: auto;             /* Ajusta la altura automáticamente */
+}
+
+/* Limita el ancho de los elementos dentro del contenedor */
+.col-md-6-perfil > * {
+    width: 100%;
+    max-width: 900px;         /* Ancho máximo del contenido */
+    margin: 0 auto;           /* Centra el contenido dentro del contenedor */
+    padding: 20px;            /* Espaciado alrededor del contenido */
+    box-sizing: border-box;   /* Asegura que el padding no afecte el ancho */
+}
+
+.perfil-container-usuario .d-flex {
+    display: flex;
+    align-items: flex-start;
+}
+
+.perfil-container-usuario .d-flex a {
+    margin-right: 10px; /* Asegura que haya espacio entre la imagen y el textarea */
+}
+
+.perfil-container-usuario .form-control {
+    width: 60%; /* Ajusta el ancho del textarea */
+    margin-right: 10px; /* Espacio entre el textarea y el contador de caracteres */
+}
+
+.char-count {
+    position: absolute;
+    bottom: -20px; /* Ajuste para que el contador de caracteres esté más cerca del textarea */
+    right: 0;
+}
+
+.perfil-container-usuario .card-body {
+    padding: 1rem;
+}
+
+.perfil-container-usuario .file-name {
+    font-size: 12px;
+    color: #777;
+}
+
+.perfil-container-usuario .remove-file-btn {
+    display: none;
+    cursor: pointer;
+    color: red;
+}

@@ -1,0 +1,112 @@
+
+
+
+
+/* Estilos generales para los comentarios */
+.comentario {
+    background-color: #e9f7ff;  /* Color de fondo del comentario (azul claro) */
+    border: 1px solid #a3d0e4;  /* Borde suave de color azul */
+    border-radius: 8px;  /* Bordes redondeados */
+    padding: 10px;  /* Espaciado interno */
+    margin-bottom: 15px;  /* Espacio inferior entre los comentarios */
+    max-width: 600px;  /* Máximo ancho del comentario */
+}
+
+/* Contenedor del encabezado del comentario */
+.comentario-header {
+    display: flex;  /* Usamos flexbox para la alineación de los elementos */
+    align-items: center;  /* Alinea verticalmente los elementos */
+    border-bottom: 1px solid #a3d0e4;  /* Línea divisoria en la parte inferior */
+    padding-bottom: 8px;  /* Espaciado en la parte inferior */
+    margin-bottom: 8px;  /* Espaciado entre el encabezado y el texto del comentario */
+}
+
+/* Estilo para la imagen del usuario */
+.comentario-header img {
+    width: 40px;  /* Ancho de la imagen del perfil */
+    height: 40px;  /* Alto de la imagen del perfil */
+    border-radius: 50%;  /* Hace que la imagen tenga forma circular */
+    object-fit: cover;  /* Mantiene la imagen centrada y recortada en forma circular */
+    margin-right: 10px;  /* Espaciado entre la imagen y el nombre */
+}
+
+/* Contenedor de la información del comentario (nombre, fecha, etc.) */
+.comentario-info {
+    flex: 1;  /* Permite que ocupe el espacio restante */
+    display: flex;  /* Usamos flexbox para organizar los elementos */
+    align-items: center;  /* Alineación vertical */
+    justify-content: space-between;  /* Espacio entre el nombre/fecha y el icono de eliminar */
+}
+
+/* Estilo para el nombre del usuario */
+.comentario-info a {
+    font-weight: bold;  /* Hace que el nombre sea negrita */
+    font-size: 14px;  /* Tamaño de la fuente */
+    color: #007bff;  /* Color azul para el nombre */
+    text-decoration: none;  /* Elimina el subrayado del enlace */
+    margin-right: 8px;  /* Espaciado a la derecha */
+}
+
+/* Estilo para la fecha del comentario */
+.comentario-info span {
+    font-size: 12px;  /* Tamaño de la fuente para la fecha */
+    color: #777;  /* Color gris para la fecha */
+}
+
+/* Estilo del texto del comentario */
+.comentario-texto {
+    background-color: #ffffff;  /* Fondo blanco para el texto */
+    padding: 12px;  /* Espaciado interno */
+    border-radius: 5px;  /* Bordes redondeados */
+    font-size: 14px;  /* Tamaño de la fuente */
+    color: #333;  /* Color de texto oscuro */
+    text-align: justify;  /* Justifica el texto */
+}
+
+/* Estilo para la etiqueta "Comentario" dentro del comentario */
+.comentario-texto strong {
+    color: #007bff;  /* Color azul */
+    font-size: 13px;  /* Tamaño de la fuente más pequeño */
+    display: flex;  /* Usamos flexbox para alinear el icono con el texto */
+    align-items: center;  /* Alineación vertical */
+}
+
+/* Espaciado entre el icono de comentario y el texto */
+.comentario-texto i {
+    margin-right: 5px;  /* Espaciado entre el icono y el texto */
+}
+
+/* Estilo de los botones (Mostrar/Ocultar comentarios) */
+button {
+    background: none;  /* Sin fondo */
+    color: #007bff;  /* Color azul */
+    border: none;  /* Sin borde */
+    font-size: 14px;  /* Tamaño de la fuente */
+    padding: 10px;  /* Espaciado interno */
+}
+
+/* Evitar que los botones tengan un borde al hacer clic */
+button:focus {
+    outline: none;  /* Elimina el contorno de enfoque */
+}
+
+/* Estilos para el icono de eliminar */
+.eliminar-icono i {
+    color: #dc3545;  /* Rojo para el icono de eliminar */
+    font-size: 18px;  /* Tamaño del icono */
+    margin-left: 15px;  /* Espaciado entre el icono y el nombre/fecha */
+    display: inline-block;  /* Asegura que el icono se muestre correctamente */
+    text-decoration: none;  /* Elimina subrayado */
+}
+
+/* Estilo de hover para el icono de eliminar */
+.eliminar-icono:hover i {
+    color: #a61e2a;  /* Rojo más oscuro al pasar el ratón */
+}
+
+/* Aseguramos que no haya colisión entre el icono y la fecha */
+.comentario-info a {
+    margin-right: 8px;  /* Añade un pequeño margen entre el enlace y el resto de los elementos */
+}
+
+

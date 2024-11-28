@@ -1,0 +1,66 @@
+.container {
+    margin-top: 80px; /* Ajuste adicional en CSS si `mt-5` no es suficiente */
+}
+
+.container-notificaciones-usuario {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h4.text-center {
+    color: #333;
+    font-weight: bold;
+}
+
+.lista-de-usuarios-registrados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.elemento-usuario-registrado {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.elemento-usuario-registrado:hover {
+    transform: scale(1.02);
+}
+
+.image-big-user {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.nombre-usuario-registrado {
+    font-size: 16px;
+    color: #555;
+}
+
+.nombre-usuario-registrado strong {
+    font-size: 18px;
+    color: #333;
+}
+
+.perfil-enlace {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.perfil-enlace:hover {
+    text-decoration: underline;
+}

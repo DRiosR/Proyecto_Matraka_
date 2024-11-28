@@ -1,0 +1,20 @@
+/* navbar.css */
+
+/* Estilo general para el navbar */
+.navbar {
+    background-color: #ffffff; /* Cambia esto a un color claro o el que desees */
+}
+
+/* Enlaces del navbar */
+.navbar-light .nav-item .nav-link {
+    color: #ea0000; /* Color de los enlaces */
+}
+
+.navbar-light .nav-item .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Color de fondo al pasar el ratón */
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+    color: #fff; /* Color del texto al pasar el ratón */
+}
+
+/* Asegúrate de que no haya reglas que sobrescriban la configuración de fondo */
