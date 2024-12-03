@@ -28,12 +28,13 @@ class publicar
 
     public function getPublicaciones()
     {
-        $this->db->query('SELECT P.idpublicacion  , P.contenidoPublicacion , P.fotoPublicacion , P.fechaPublicacion, U.usuario, U.idusuario , 
-        Per.idFoto FROM publicaciones P 
-        INNER JOIN usuarios U ON U.idusuario  = P.idUserPublico  
-        INNER JOIN perfil Per ON Per.idUsuario  = P.idUserPublico ');
+        $this->db->query('SELECT P.idpublicacion, P.contenidoPublicacion, P.fotoPublicacion, P.fechaPublicacion, P.estadoPublicacion, U.usuario, U.idusuario, Per.idFoto 
+                          FROM publicaciones P 
+                          INNER JOIN usuarios U ON U.idusuario = P.idUserPublico  
+                          INNER JOIN perfil Per ON Per.idUsuario = P.idUserPublico');
         return $this->db->registers();
     }
+    
 
 
     public function getPublicacion($id)
@@ -44,6 +45,7 @@ class publicar
     }
 
 
+    
     public function eliminarPublicacion($publicacion)
     {
         $this->db->query('DELETE FROM publicaciones WHERE idpublicacion = :id');
@@ -114,15 +116,31 @@ class publicar
     }
 
     public function getPublicacionesPorUsuario($idusuario)
-{
-    // Asegúrate de usar el nombre correcto de la columna en la tabla publicaciones
-    $this->db->query('SELECT * FROM publicaciones WHERE idUserPublico = :idusuario ORDER BY fechaPublicacion DESC');
-    
-    // Vincula el parámetro para prevenir inyecciones SQL
-    $this->db->bind(':idusuario', $idusuario);
+    {
+        // Asegúrate de usar el nombre correcto de la columna en la tabla publicaciones
+        $this->db->query('SELECT * FROM publicaciones WHERE idUserPublico = :idusuario ORDER BY fechaPublicacion DESC');
 
-    // Ejecuta la consulta y retorna los resultados
-    return $this->db->registers();
-}
+        // Vincula el parámetro para prevenir inyecciones SQL
+        $this->db->bind(':idusuario', $idusuario);
+
+        // Ejecuta la consulta y retorna los resultados
+        return $this->db->registers();
+    }
+
+    public function cambiarEstadoPublicacion($idPublicacion, $nuevoEstado)
+    {
+        // Consulta para actualizar el estado
+        $this->db->query('UPDATE publicaciones SET estadoPublicacion = :nuevoEstado WHERE idpublicacion = :idPublicacion');
+        $this->db->bind(':nuevoEstado', $nuevoEstado);
+        $this->db->bind(':idPublicacion', $idPublicacion);
+
+        // Ejecutar la consulta y retornar si fue exitosa o no
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
+
 }

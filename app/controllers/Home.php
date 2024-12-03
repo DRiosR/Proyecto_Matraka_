@@ -56,6 +56,8 @@ class Home extends Controller
                 $_SESSION['logueado'] = $datosUsuario->idusuario;
                 $_SESSION['usuario'] = $datosUsuario->usuario;
                 $_SESSION['idFoto'] = $datosPerfil->idFoto;
+                $_SESSION['privilegio'] = $datosUsuario->idPrivilegio;
+
                 redireccion('/home');
             } else {
                 $_SESSION['errorLogin'] = 'El usuario o contraseña son incorrectos';
@@ -111,38 +113,24 @@ class Home extends Controller
 
     public function insertarRegistrosPerfil()
     {
-        // Define una carpeta dentro de tu proyecto en lugar de una ruta absoluta local.
-        // En Azure, puedes guardar las imágenes en un directorio dentro de tu aplicación.
-        $carpeta = $_SERVER['DOCUMENT_ROOT'] . '/public/img/imagenesPerfil/';
-    
-        // Asegúrate de que la carpeta de destino exista.
-        if (!is_dir($carpeta)) {
-            mkdir($carpeta, 0777, true); // Crea la carpeta si no existe
-        }
-    
-        // Define la ruta de la imagen en tu servidor, manteniendo la estructura de carpetas.
+        $carpeta = 'C:/xampp/htdocs/Proyecto_Matraka/public/img/imagenesPerfil/';
+        opendir($carpeta);
         $rutaImagen = 'img/imagenesPerfil/' . $_FILES['imagen']['name'];
         $ruta = $carpeta . $_FILES['imagen']['name'];
-    
-        // Mueve la imagen al directorio de destino
-        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta)) {
-            $datos = [
-                'idusuario' => trim($_POST['id_user']),
-                'ruta' => $rutaImagen
-            ];
-    
-            // Guarda la ruta en la base de datos
-            if ($this->usuario->insertarPerfil($datos)) {
-                $_SESSION['idFoto'] = $rutaImagen;
-                redireccion('/home');
-            } else {
-                echo 'El perfil no se ha guardado correctamente';
-            }
+        copy($_FILES['imagen']['tmp_name'], $ruta);
+
+        $datos = [
+            'idusuario' => trim($_POST['id_user']),
+            'ruta' => $rutaImagen
+        ];
+
+        if ($this->usuario->insertarPerfil($datos)) {
+            $_SESSION['idFoto'] = $rutaImagen;
+            redireccion('/home');
         } else {
-            echo 'Error al cargar la imagen';
+            echo 'El prefil no se a guardado';
         }
     }
-    
 
     public function logout()
     {

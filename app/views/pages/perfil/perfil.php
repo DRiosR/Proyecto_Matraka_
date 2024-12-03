@@ -130,6 +130,42 @@ include_once URL_APP . '/views/custom/navbar.php';
                         <?php endif; ?>
                     </div>
 
+                    <!-- Estado de la publicación -->
+                    <div class="estado-publicacion" style="margin-top: 10px;">
+                        <span class="badge" id="estadoPublicacion" style="background-color: 
+    <?php
+            // Convertir a minúsculas para comparación
+            $estado = strtolower(trim($datosPublicacion->estadoPublicacion));
+            if ($estado === 'sin revision') {
+                echo '#f8a400'; // Naranja suave
+            } elseif ($estado === 'en revision') {
+                echo '#5bc0de'; // Azul suave
+            } elseif ($estado === 'revisado') {
+                echo '#28a745'; // Verde suave
+            } else {
+                echo '#6c757d'; // Gris claro
+            }
+            ?>; color: white;">
+                            <?php echo ucwords(str_replace('_', ' ', $datosPublicacion->estadoPublicacion)); ?>
+                        </span>
+                    </div>
+
+                    <!-- Cambiar Estado de la Publicación -->
+                    <?php if (isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 1): ?>
+                        <div class="cambiar-estado" style="margin-top: 10px;">
+                            <form action="<?php echo URL_PROJECT ?>/publicaciones/cambiarEstado" method="POST">
+                                <input type="hidden" name="id_publicacion" value="<?php echo $datosPublicacion->idpublicacion; ?>">
+                                <select name="nuevo_estado" class="form-select" onchange="this.form.submit();">
+                                    <option value="sin revision" <?php echo (strtolower(trim($datosPublicacion->estadoPublicacion)) === 'sin revision') ? 'selected' : ''; ?>>Sin Revisión</option>
+                                    <option value="en revision" <?php echo (strtolower(trim($datosPublicacion->estadoPublicacion)) === 'en revision') ? 'selected' : ''; ?>>En Revisión</option>
+                                    <option value="revisado" <?php echo (strtolower(trim($datosPublicacion->estadoPublicacion)) === 'revisado') ? 'selected' : ''; ?>>
+                                        Revisada</option>
+                                </select>
+                            </form>
+                        </div>
+                    <?php endif; ?>
+
+
                     <!-- Hacer comentarios de Publicaciones -->
                     <div class="acciones-comentarios">
                         <div class="formulario-comentarios">
@@ -233,7 +269,8 @@ include_once URL_APP . '/views/custom/navbar.php';
                                             <img src="<?php echo URL_PROJECT . '/' . $comentarioRestante->idFoto; ?>"
                                                 alt="Imagen de perfil">
                                             <div class="comentario-info">
-                                                <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $comentarioRestante->usuario; ?>">
+                                                <a
+                                                    href="<?php echo URL_PROJECT ?>/perfil/<?php echo $comentarioRestante->usuario; ?>">
                                                     <?php echo htmlspecialchars($comentarioRestante->usuario); ?>
                                                 </a>
                                                 <span><?php echo date("Y-m-d H:i:s", strtotime($comentarioRestante->fechaComentario)); ?></span>
@@ -273,23 +310,33 @@ include_once URL_APP . '/views/custom/navbar.php';
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-        
+
             <p class="no-posts">No se encontraron publicaciones de este usuario.</p>
             <style>
-        .no-posts {
-            text-align: center; /* Centra el texto */
-            font-size: 1.2rem; /* Tamaño de fuente un poco más grande */
-            color: #555; /* Color de texto gris suave */
-            background-color: #85c1e9 ; /* Fondo gris claro */
-            padding: 15px; /* Espaciado alrededor del texto */
-            border-radius: 8px; /* Bordes redondeados */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-            max-width: 600px; /* Ancho máximo para que no se extienda demasiado */
-            margin: 20px auto; /* Centrar el bloque en la página */
-            font-family: 'Arial', sans-serif; /* Tipografía clara y moderna */
-        }
-    </style>
-            <?php endif; ?>
+                .no-posts {
+                    text-align: center;
+                    /* Centra el texto */
+                    font-size: 1.2rem;
+                    /* Tamaño de fuente un poco más grande */
+                    color: #555;
+                    /* Color de texto gris suave */
+                    background-color: #85c1e9;
+                    /* Fondo gris claro */
+                    padding: 15px;
+                    /* Espaciado alrededor del texto */
+                    border-radius: 8px;
+                    /* Bordes redondeados */
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    /* Sombra sutil */
+                    max-width: 600px;
+                    /* Ancho máximo para que no se extienda demasiado */
+                    margin: 20px auto;
+                    /* Centrar el bloque en la página */
+                    font-family: 'Arial', sans-serif;
+                    /* Tipografía clara y moderna */
+                }
+            </style>
+        <?php endif; ?>
     </div>
 </div>
 

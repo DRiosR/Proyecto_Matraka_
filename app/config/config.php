@@ -1,13 +1,14 @@
 <?php
 
-// Definimos las constantes de nuestra base de datos para Azure
-define('DB_HOST', 'srvgossip.database.windows.net');  // Dirección de tu servidor en Azure
-define('DB_NAME', 'bdGosssip');  // Nombre de tu base de datos en Azure
-define('DB_USER', 'Rios@srvgossip');  // Tu usuario en Azure SQL Database
-define('DB_PASSWORD', 'Moto030804');  // Tu contraseña de Azure SQL Database
+//definimos las constantes de nuestra base de datos
 
+define('DB_HOST','localhost');
+define('DB_NAME','redsocial');
+define('DB_USER','root');
+define('DB_PASSWORD','');
 
-// Definir las constantes de nuestro proyecto
+//Definir las constantes de nuestro proyecto
+
 define('URL_APP', dirname(dirname(__FILE__)));
-define('URL_PROJECT', 'https://gossip-h6bzcrfqg5h8axgn.westus-01.azurewebsites.net');  // URL pública de tu app en Azure
+define('URL_PROJECT', 'http://localhost/Proyecto_Matraka');
 define('NAME_PROJECT', 'GOSSIP');

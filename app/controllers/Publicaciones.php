@@ -9,23 +9,16 @@ class Publicaciones extends Controller
 
     public function publicar($idUsuario)
     {
-        if (isset($_FILES['imagen'])) {
-            // Usamos la ruta relativa en lugar de una ruta absoluta local.
-            $carpeta = $_SERVER['DOCUMENT_ROOT'] . '/public/img/imagenesPublicaciones/';
-            
-            // Aseguramos que la carpeta exista
-            if (!is_dir($carpeta)) {
-                mkdir($carpeta, 0777, true);
-            }
 
+        if (isset($_FILES['imagen'])) {
+            $carpeta = 'C:/xampp/htdocs/Proyecto_Matraka/public/img/imagenesPublicaciones/';
+            opendir($carpeta);
             $rutaImagen = 'img/imagenesPublicaciones/' . $_FILES['imagen']['name'];
             $ruta = $carpeta . $_FILES['imagen']['name'];
-
-            // Si la imagen es válida, la movemos a la carpeta destino
             if (!empty($_FILES['imagen']['tmp_name'])) {
-                move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
+                copy($_FILES['imagen']['tmp_name'], $ruta);
             } else {
-                $rutaImagen = 'sin imagen';  // Si no hay imagen, usamos esta opción
+                $rutaImagen = 'sin imagen';
             }
         }
 
@@ -35,11 +28,11 @@ class Publicaciones extends Controller
             'foto' => $rutaImagen
         ];
 
-        // Llamamos al modelo para guardar la publicación
+
         if ($this->publicar->publicar($datos)) {
             redireccion('/home');
         } else {
-            echo 'Algo ocurrió al publicar';
+            echo 'algo ocurrio';
         }
     }
     public function eliminar($idpublicacion)
@@ -53,10 +46,10 @@ class Publicaciones extends Controller
         // Eliminar los comentarios asociados
         foreach ($comentarios as $comentario) {
             if ($this->publicar->eliminarComentarioUsuario($comentario->idcomentario)) {
-                // Continuar con el siguiente comentario si se elimina correctamente
+                // Si se elimina correctamente, continuar con la siguiente iteración
                 continue;
             } else {
-                // Si hay un error al eliminar un comentario
+                // Si algo sale mal, puedes agregar un log o mensaje para los comentarios que no se eliminan
                 echo 'Error al eliminar comentario con ID: ' . $comentario->idcomentario;
             }
         }
@@ -64,10 +57,8 @@ class Publicaciones extends Controller
         // Ahora, eliminar la publicación
         if ($this->publicar->eliminarPublicacion($publicacion)) {
             // Si la publicación se elimina correctamente, eliminar la imagen
-            if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $publicacion->fotoPublicacion)) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/' . $publicacion->fotoPublicacion);
-            }
-
+            unlink(('C:/xampp/htdocs/Proyecto_Matraka/public/' . $publicacion->fotoPublicacion));
+            
             // Redirigir después de la eliminación exitosa
             redireccion('/home');
         } else {
@@ -75,6 +66,7 @@ class Publicaciones extends Controller
             echo 'Error al eliminar la publicación';
         }
     }
+    
 
     public function comentar()
     {
@@ -105,4 +97,35 @@ class Publicaciones extends Controller
 
         }
     }
+    public function cambiarEstado()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $idPublicacion = $_POST['id_publicacion'];
+            $nuevoEstado = $_POST['nuevo_estado'];
+    
+            if (!empty($idPublicacion) && !empty($nuevoEstado)) {
+                // Llamamos al modelo para cambiar el estado
+                if ($this->publicar->cambiarEstadoPublicacion($idPublicacion, $nuevoEstado)) {
+                    $_SESSION['success'] = 'Estado de la publicación actualizado.';
+                } else {
+                    $_SESSION['error'] = 'Error al actualizar el estado de la publicación.';
+                }
+            } else {
+                $_SESSION['error'] = 'Datos incompletos para actualizar el estado.';
+            }
+        }
+    
+        // Usamos la variable de sesión para redirigir al perfil correcto
+        if (isset($_SESSION['perfil_usuario'])) {
+            // Redirigimos al mismo perfil
+            header("Location: " . URL_PROJECT . "/perfil/index/" . $_SESSION['perfil_usuario']);
+            exit();
+        } else {
+            // Si no hay sesión de perfil, redirigimos al home
+            header("Location: " . URL_PROJECT . "/home");
+            exit();
+        }
+    }
+    
+
 }

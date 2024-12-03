@@ -25,7 +25,7 @@ class perfilUsuario
     public function obtenerPublicacionesPorUsuario($idUsuario)
 {
     $this->db->query(" SELECT p.idpublicacion, p.contenidoPublicacion, p.fotoPublicacion, 
-        p.fechaPublicacion, u.usuario, u.idusuario, Per.idFoto
+        p.fechaPublicacion, u.usuario, u.idusuario, Per.idFoto, p.estadoPublicacion
         FROM publicaciones p
         JOIN usuarios u ON p.idUserPublico = u.idusuario
         LEFT JOIN perfil Per ON u.idusuario = Per.idusuario  -- Aquí se añade el LEFT JOIN con la tabla perfil
