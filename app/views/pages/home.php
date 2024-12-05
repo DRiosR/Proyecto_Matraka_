@@ -314,15 +314,22 @@ include_once URL_APP . '/views/custom/navbar.php';
                                                     href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datosComentarios->usuario; ?>">
                                                     <?php echo htmlspecialchars($datosComentarios->usuario); ?>
                                                 </a>
+                                                <!-- Mostrar "Administrador" si el usuario es admin -->
+                                                <?php if ($datosComentarios->idPrivilegio == 1): ?>
+                                                    <span class="badge badge-admin"
+                                                        style="background-color: #007bff; color: white; margin-left: 5px;">
+                                                        Administrador
+                                                    </span>
+                                                <?php endif; ?>
                                                 <span><?php echo date("Y-m-d H:i:s", strtotime($datosComentarios->fechaComentario)); ?></span>
                                                 <?php if ($datosComentarios->iduser == $_SESSION['logueado']): ?>
                                                     <a href="<?php echo URL_PROJECT ?>/publicaciones/eliminarComentario/<?php echo $datosComentarios->idcomentario; ?>"
                                                         class="eliminar-icono">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
-
                                                 <?php endif; ?>
                                             </div>
+
                                         </div>
 
                                         <div class="comentario-texto">
@@ -347,17 +354,25 @@ include_once URL_APP . '/views/custom/navbar.php';
                                                     alt="Imagen de perfil">
                                                 <div class="comentario-info">
                                                     <a
-                                                        href="<?php echo URL_PROJECT ?>/perfil/<?php echo $comentarioRestante->usuario; ?>">
-                                                        <?php echo htmlspecialchars($comentarioRestante->usuario); ?>
+                                                        href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datosComentarios->usuario; ?>">
+                                                        <?php echo htmlspecialchars($datosComentarios->usuario); ?>
                                                     </a>
-                                                    <span><?php echo date("Y-m-d H:i:s", strtotime($comentarioRestante->fechaComentario)); ?></span>
-                                                    <?php if ($comentarioRestante->iduser == $_SESSION['logueado']): ?>
-                                                        <a href="<?php echo URL_PROJECT ?>/publicaciones/eliminarComentario/<?php echo $comentarioRestante->idcomentario ?>"
+                                                    <!-- Mostrar "Administrador" si el usuario es admin -->
+                                                    <?php if ($datosComentarios->idPrivilegio == 1): ?>
+                                                        <span class="badge badge-admin"
+                                                            style="background-color: #007bff; color: white; margin-left: 5px;">
+                                                            Administrador
+                                                        </span>
+                                                    <?php endif; ?>
+                                                    <span><?php echo date("Y-m-d H:i:s", strtotime($datosComentarios->fechaComentario)); ?></span>
+                                                    <?php if ($datosComentarios->iduser == $_SESSION['logueado']): ?>
+                                                        <a href="<?php echo URL_PROJECT ?>/publicaciones/eliminarComentario/<?php echo $datosComentarios->idcomentario; ?>"
                                                             class="eliminar-icono">
                                                             <i class="far fa-trash-alt"></i>
                                                         </a>
-                                                    <?php endif ?>
+                                                    <?php endif; ?>
                                                 </div>
+
                                             </div>
 
                                             <div class="comentario-texto">

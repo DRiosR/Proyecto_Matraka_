@@ -69,9 +69,98 @@ include_once URL_APP . '/views/custom/navbar.php';
                                             onclick="document.getElementById('imagen').value = ''; document.getElementById('nombreArchivo').textContent = ''; this.style.display = 'none';">
                                             <span class="remove-icon">×</span>
                                         </span>
+
+                                        <!-- Mensaje de advertencia y aceptación -->
+                                        <div class="form-group d-flex align-items-center mt-3">
+                                            <input type="checkbox" id="accept-checkbox" required
+                                                style="margin-right: 10px;">
+                                            <label for="accept-checkbox" class="m-0">
+                                                Soy consciente de que esta publicación puede hacer y que he leído y
+                                                acepto los <a href="javascript:void(0);" id="terms-link"
+                                                    style="text-decoration: underline;">términos y condiciones</a>.
+                                            </label>
+                                        </div>
+
                                         <button type="submit" class="btn btn-primary post-submit-btn">Publicar</button>
                                     </div>
                                 </form>
+                                <!-- Modal de términos y condiciones -->
+                                <div id="terms-modal"
+                                    style="display:none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; padding-top: 50px;">
+                                    <div
+                                        style="background: white; margin: auto; padding: 20px; width: 80%; max-width: 600px;">
+                                        <h4 class="text-center">TÉRMINOS Y CONDICIONES DE USO</h4>
+                                        <p>
+                                            Recuerde que sus denuncias tienen un gran impacto y serán tomadas en cuenta. Si
+                                            su
+                                            denuncia está basada en hechos verídicos y no en difamación, su contribución
+                                            será
+                                            valiosa para la comunidad. Sin embargo, si se determina que su publicación tiene
+                                            fines difamatorios o carece de fundamento, podrá ser sancionada de acuerdo con
+                                            lo
+                                            estipulado en los términos de uso.
+                                        </p>
+                                        <div class="terms-scroll">
+                                            <p><strong>1. Propósito de la aplicación</strong><br>
+                                                Esta plataforma está diseñada para que los usuarios puedan reportar actos de
+                                                nepotismo o corrupción relacionados con la institución UABC Ensenada o su
+                                                personal.
+                                                Las publicaciones serán visibles públicamente con el objetivo de fomentar la
+                                                transparencia y la participación.
+                                            </p>
+                                            <p><strong>2. Reglas de uso</strong><br>
+                                                El usuario se compromete a publicar contenido veraz, relevante y respetuoso.
+                                                Está prohibido el uso de lenguaje ofensivo, difamatorio, o contenido que
+                                                infrinja los derechos de otras personas.
+                                                Las publicaciones deben estar relacionadas exclusivamente con actos de
+                                                nepotismo
+                                                o corrupción en la institución UABC.
+                                                El uso indebido de la plataforma puede resultar en la suspensión o
+                                                eliminación
+                                                de su cuenta.
+                                            </p>
+                                            <p><strong>3. Publicidad de las publicaciones</strong><br>
+                                                Todas las publicaciones realizadas en la plataforma serán visibles para
+                                                todos
+                                                los usuarios.
+                                                Al realizar una publicación, usted acepta que el contenido será público y
+                                                podrá
+                                                ser comentado o compartido por otros usuarios dentro de la plataforma.
+                                            </p>
+                                            <p><strong>4. Responsabilidad del usuario</strong><br>
+                                                El usuario asume total responsabilidad por el contenido publicado y por las
+                                                consecuencias legales derivadas de información falsa, inapropiada o que
+                                                afecte
+                                                negativamente a terceros.
+                                                La plataforma no será responsable de daños o perjuicios ocasionados por el
+                                                uso
+                                                de los datos o publicaciones por parte de terceros.
+                                            </p>
+                                            <p><strong>5. Política de datos</strong><br>
+                                                Los datos personales proporcionados al registrarse serán utilizados
+                                                únicamente
+                                                para administrar su cuenta.
+                                                La plataforma no compartirá su información personal con terceros sin su
+                                                consentimiento, excepto cuando sea requerido por ley.
+                                            </p>
+                                            <p><strong>6. Modificaciones</strong><br>
+                                                Nos reservamos el derecho de actualizar o modificar estos términos y
+                                                condiciones
+                                                en cualquier momento. Cualquier cambio será comunicado a través de la
+                                                plataforma, y su uso continuado implicará la aceptación de los mismos.
+                                            </p>
+                                            <p><strong>7. Aceptación de los términos</strong><br>
+                                                Al marcar la casilla de verificación "He leído y acepto los términos y
+                                                condiciones", usted confirma haber leído, entendido y aceptado los presentes
+                                                términos y condiciones.
+                                            </p>
+                                        </div>
+
+
+                                        <button onclick="closeTermsModal()" class="btn btn-secondary">Cerrar</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

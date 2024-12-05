@@ -89,7 +89,8 @@ class publicar
 
     public function getInformacionComentarios($comentarios)
     {
-        $this->db->query('SELECT C.idPublicacion , C.iduser , C.idcomentario ,  C.contenidoComentario , C.fechaComentario, P.idFoto, U.usuario FROM comentarios C 
+        $this->db->query('SELECT C.idPublicacion , C.iduser , C.idcomentario ,  C.contenidoComentario , C.fechaComentario, P.idFoto, U.usuario, U.idPrivilegio 
+ FROM comentarios C 
         INNER JOIN perfil P ON P.idUsuario = C.idUser 
         INNER JOIN usuarios U ON U.idusuario = C.idUser');
         return $this->db->registers();
