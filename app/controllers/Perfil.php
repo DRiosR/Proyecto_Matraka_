@@ -1,6 +1,9 @@
 <?php
 class Perfil extends Controller
 {
+  public $usuario;
+  public $perfil;
+  public $publicaciones;
   public function __construct()
   {
     $this->perfil = $this->model('perfilUsuario');

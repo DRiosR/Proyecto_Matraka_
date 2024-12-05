@@ -3,28 +3,63 @@ class publicar
 {
 
     private $db;
+    private $blockchain;
+
 
     public function __construct()
     {
         $this->db = new Base;
-    }
-
-    public function publicar($datos)
-    {
-        $this->db->query('INSERT INTO publicaciones (idUserPublico, contenidoPublicacion, fotoPublicacion) VALUES (:iduser, :contenido, :foto)');
-        $this->db->bind(':iduser', $datos['iduser']);
-        $this->db->bind(':contenido', $datos['contenido']);
-        $this->db->bind(':foto', $datos['foto']);
-
-
-
-        if ($this->db->execute()) {
-            return true;
+        if (file_exists('blockchain.json')) {
+            $blockchainData = json_decode(file_get_contents('blockchain.json'), true);
+            $this->blockchain = new Blockchain();
+            $this->blockchain->chain = array_map(function ($block) {
+                return new Block(
+                    $block['index'],
+                    $block['timestamp'],
+                    $block['data'],
+                    $block['previousHash']
+                );
+            }, $blockchainData);
         } else {
-            return false;
+            $this->blockchain = new Blockchain();
         }
-
     }
+
+    
+    public function publicar($datos)
+{
+    global $blockchain;
+
+    // Inserta la publicación en la base de datos
+    $this->db->query('INSERT INTO publicaciones (idUserPublico, contenidoPublicacion, fotoPublicacion) VALUES (:iduser, :contenido, :foto)');
+    $this->db->bind(':iduser', $datos['iduser']);
+    $this->db->bind(':contenido', $datos['contenido']);
+    $this->db->bind(':foto', $datos['foto']);
+
+    if ($this->db->execute()) {
+        // Si se inserta con éxito, agrega un bloque al blockchain
+        $blockchain->addBlock([
+            'iduser' => $datos['iduser'],
+            'contenido' => $datos['contenido'],
+            'foto' => $datos['foto'],
+            'fecha' => date('Y-m-d H:i:s')
+        ]);
+
+        // Guarda el blockchain en un archivo para persistencia
+        file_put_contents('blockchain.json', json_encode($blockchain->chain));
+
+        return true;
+    } else {
+        return false;
+    }
+    if (!$blockchain->isChainValid()) {
+        die("El blockchain ha sido alterado. Se necesita una revisión.");
+    }
+}
+
+
+
+
 
     public function getPublicaciones()
     {
@@ -89,8 +124,7 @@ class publicar
 
     public function getInformacionComentarios($comentarios)
     {
-        $this->db->query('SELECT C.idPublicacion , C.iduser , C.idcomentario ,  C.contenidoComentario , C.fechaComentario, P.idFoto, U.usuario, U.idPrivilegio 
- FROM comentarios C 
+        $this->db->query('SELECT C.idPublicacion , C.iduser , C.idcomentario ,  C.contenidoComentario , C.fechaComentario, P.idFoto, U.usuario FROM comentarios C 
         INNER JOIN perfil P ON P.idUsuario = C.idUser 
         INNER JOIN usuarios U ON U.idusuario = C.idUser');
         return $this->db->registers();

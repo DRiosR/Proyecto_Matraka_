@@ -1,5 +1,10 @@
 <?php
 
+//Blockchain
+require_once 'Blockchain.php';
+
+$blockchain = new Blockchain();
+
 //definimos las constantes de nuestra base de datos
 
 define('DB_HOST','localhost');

@@ -2,14 +2,14 @@
 
 class Publicaciones extends Controller
 {
+    public $publicar;
     public function __construct()
     {
         $this->publicar = $this->model('publicar');
     }
 
-    public function publicar($idUsuario)
-    {
 
+    public function publicar($idUsuario) {
         if (isset($_FILES['imagen'])) {
             $carpeta = 'C:/xampp/htdocs/Proyecto_Matraka/public/img/imagenesPublicaciones/';
             opendir($carpeta);
@@ -21,20 +21,29 @@ class Publicaciones extends Controller
                 $rutaImagen = 'sin imagen';
             }
         }
-
+    
         $datos = [
             'iduser' => trim($idUsuario),
             'contenido' => trim($_POST['contenido']),
             'foto' => $rutaImagen
         ];
-
-
+    
+        // Instancia de Blockchain
+        $blockchain = new Blockchain('blockchain.json');
+    
+        // Agregar los datos como un nuevo bloque
+        $blockchain->addBlock($datos);
+    
         if ($this->publicar->publicar($datos)) {
             redireccion('/home');
         } else {
-            echo 'algo ocurrio';
+            echo 'Algo ocurrió';
         }
     }
+    
+    
+    
+
     public function eliminar($idpublicacion)
     {
         // Primero, obtener la publicación y los comentarios asociados
@@ -66,7 +75,7 @@ class Publicaciones extends Controller
             echo 'Error al eliminar la publicación';
         }
     }
-    
+
 
     public function comentar()
     {
@@ -88,6 +97,7 @@ class Publicaciones extends Controller
         }
     }
 
+
     public function eliminarComentario($id)
     {
         if ($this->publicar->eliminarComentarioUsuario($id)) {
@@ -97,6 +107,8 @@ class Publicaciones extends Controller
 
         }
     }
+
+    
     public function cambiarEstado()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

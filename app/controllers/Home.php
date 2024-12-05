@@ -2,6 +2,9 @@
 
 class Home extends Controller
 {
+    public $usuario;
+    public $publicaciones;
+    
     public function __construct()
     {
         $this->usuario = $this->model('usuario');

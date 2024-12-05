@@ -2,6 +2,13 @@
 
 class Controller
 {
+    protected $blockchain;
+
+    public function __construct() {
+        global $blockchain; // Asegúrate de que la instancia esté accesible
+        $this->blockchain = $blockchain;
+    }
+    
     public function model($modelo)
     {
         require_once '../app/models/' . $modelo . '.php';
