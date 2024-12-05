@@ -1,5 +1,3 @@
-/* navbar.css */
-
 /* Estilo general para el navbar */
 .navbar {
     background-color: #ffffff; /* Cambia esto a un color claro o el que desees */
@@ -17,4 +15,38 @@
     color: #fff; /* Color del texto al pasar el ratón */
 }
 
-/* Asegúrate de que no haya reglas que sobrescriban la configuración de fondo */
+/* Estilo personalizado para que el menú se vea más centrado */
+.navbar-nav {
+    display: flex;
+    justify-content: center; /* Centra los items de la navbar */
+    width: 100%; /* Asegura que ocupe todo el espacio disponible */
+}
+
+/* Estilo para el botón de la dropdown (menú desplegable) */
+.navbar-nav .nav-item .dropdown-toggle {
+    border: 1px solid #007bff; /* Borde azul para el botón */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 5px; /* Espaciado interno */
+}
+
+/* Estilo para la imagen dentro del menú desplegable */
+.navbar-nav .nav-item .dropdown-toggle img {
+    cursor: pointer; /* El cursor cambia a "puntero" al pasar sobre la imagen */
+    border: 1px solid #000000; /* Un borde negro alrededor de la imagen */
+    padding: 3px; /* Espaciado alrededor de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+}
+
+/* Estilo para el menú desplegable */
+.dropdown-menu {
+    min-width: 100px; /* Ajusta el ancho mínimo del menú */
+    padding: 5px; /* Espaciado dentro del menú */
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Efecto hover para el botón del dropdown */
+.navbar-nav .nav-item .dropdown-toggle:hover {
+    background-color: #007bff; /* Fondo azul cuando pasa el cursor */
+    color: white; /* Cambia el color del texto */
+}

@@ -1,9 +1,8 @@
 /* Contenedor principal de perfil */
 .perfil-container-usuario {
     background-color: #f0f2f5;
-    padding-top: 20px;
+    padding-bottom: 30px;  /* Ajusta este valor según el espacio que desees en la parte inferior */
 }
-
 /* Imagen de portada */
 .imagen-header-perfil-usuario img.imagen-portada-perfil {
     width: 100%;

@@ -157,7 +157,7 @@ include_once URL_APP . '/views/custom/navbar.php';
                     return strtotime($b->fechaPublicacion) - strtotime($a->fechaPublicacion);
                 });
                 ?>
-
+</div>
                 <?php foreach ($datos['publicaciones'] as $datosPublicacion): ?>
                     <div class="container-usuarios-publicaciones">
 
@@ -232,7 +232,7 @@ include_once URL_APP . '/views/custom/navbar.php';
                                     <select name="nuevo_estado" class="form-select" onchange="this.form.submit();">
                                         <option value="sin revision" <?php echo (strtolower(trim($datosPublicacion->estadoPublicacion)) === 'sin revision') ? 'selected' : ''; ?>>Sin Revisión</option>
                                         <option value="en revision" <?php echo (strtolower(trim($datosPublicacion->estadoPublicacion)) === 'en revision') ? 'selected' : ''; ?>>En Revisión</option>
-                                        <option value="revisado" <?php echo (strtolower(trim($datosPublicacion->estadoPublicacion)) === 'revisado') ? 'selected' : ''; ?>>revisado</option>
+                                        <option value="revisado" <?php echo (strtolower(trim($datosPublicacion->estadoPublicacion)) === 'revisado') ? 'selected' : ''; ?>>Revisado</option>
                                     </select>
                                 </form>
                             </div>
@@ -397,7 +397,7 @@ include_once URL_APP . '/views/custom/navbar.php';
         <!-- Extra Column (Events or Additional Content) -->
         <div class="col-md-3">
             <div class="">
-
+                                    
             </div>
         </div>
     </div>

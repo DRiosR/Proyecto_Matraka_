@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 
+
 /* Estilo personalizado para que el menú se vea más centrado */
 .navbar-nav .nav-item .dropdown-toggle {
-    border: 1px solid #fa0000;
+    border: 1px solid #007bff;
     border-radius: 15px;
     padding: 5px;
   }
   
   .navbar-nav .nav-item .dropdown-toggle img {
     cursor: pointer;
-    border: 1px solid #b085f5;
+    border: 1px solid #000000;
     padding: 3px;
     border-radius: 50%;
   }
@@ -29,10 +30,12 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
+    background-color: #56baed !important;
+
 }
 
 a {
-    color: #92badd;
+    color: #9add92;
     display: inline-block;
     text-decoration: none;
     font-weight: 400;

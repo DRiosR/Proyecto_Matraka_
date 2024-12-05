@@ -114,3 +114,37 @@ button.btn-primary {
     border-radius: 5px;
     padding: 15px;
 }
+.form-group {
+    background-color: #f9f9f9; /* Fondo claro para destacar el bloque */
+    padding: 15px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Bordes redondeados */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el checkbox y el texto */
+    font-size: 14px; /* Tamaño de fuente legible */
+}
+
+#accept-checkbox {
+    width: 18px; /* Tamaño del checkbox */
+    height: 18px;
+    accent-color: #007bff; /* Color azul personalizado para el checkbox */
+    cursor: pointer; /* Cambia a mano al pasar el mouse */
+}
+
+.form-group label {
+    color: #000000; /* Texto oscuro, fácil de leer */
+    line-height: 1.5; /* Altura de línea para mejor legibilidad */
+    margin: 0; /* Elimina margenes adicionales */
+}
+
+.form-group a {
+    color: #007bff; /* Azul para el enlace */
+    text-decoration: underline; /* Subrayado predeterminado */
+    font-weight: bold; /* Resalta el enlace */
+}
+
+.form-group a:hover {
+    color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    text-decoration: none; /* Quita el subrayado en hover */
+}
